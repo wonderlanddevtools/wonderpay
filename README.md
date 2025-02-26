@@ -1,29 +1,79 @@
-# Create T3 App
+# WonderPay
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+WonderPay is a payment processing platform built using the [T3 Stack](https://create.t3.gg/) and integrated with the [Monite API](https://docs.monite.com/) for financial operations.
 
-## What's next? How do I make an app with this?
+## Features
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Monite API integration for invoicing and payment processing
+- Entity and user management system
+- Secure authentication using NextAuth.js
+- Type-safe database operations with Prisma
+- Responsive UI built with Tailwind CSS
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Tech Stack
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- [Next.js](https://nextjs.org) - React framework for server-rendered applications
+- [NextAuth.js](https://next-auth.js.org) - Authentication solution
+- [Prisma](https://prisma.io) - Type-safe ORM for database access
+- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
+- [tRPC](https://trpc.io) - End-to-end typesafe API
+- [Monite API](https://docs.monite.com/) - Financial operations platform
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+- Docker (for local database)
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy the example environment file:
+   ```bash
+   cp .env.example .env
+   ```
+4. Update `.env` with your Monite API credentials:
+   ```
+   MONITE_CLIENT_ID=your_client_id
+   MONITE_CLIENT_SECRET=your_client_secret
+   MONITE_ENTITY_ID=your_entity_id (optional)
+   ```
+5. Start the database:
+   ```bash
+   ./start-database.sh
+   ```
+6. Push the database schema:
+   ```bash
+   npm run db:push
+   ```
+7. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Monite API Integration
+
+WonderPay uses the Monite API for financial operations. The integration includes:
+
+1. Secure token generation and management
+2. Entity and user creation
+3. React components for Monite UI
+
+### Configuration
+
+The Monite API requires authentication tokens for all operations. WonderPay includes:
+
+- Server-side token generation endpoints
+- Client-side hooks for using the Monite SDK
+- React components for Monite UI integration
 
 ## Learn More
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- [Monite API Documentation](https://docs.monite.com/)
+- [T3 Stack Documentation](https://create.t3.gg/)
