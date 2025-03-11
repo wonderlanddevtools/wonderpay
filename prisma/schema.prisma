@@ -60,6 +60,8 @@ model User {
     email         String?   @unique
     emailVerified DateTime?
     image         String?
+    password      String?   // Hashed password for credential auth
+    moniteEntityId String?  // Reference to the entity in Monite
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
