@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 import { GlowButton } from "@/components/ui/glow-button";
 import { signIn } from 'next-auth/react';
 
@@ -44,10 +46,12 @@ export default function LoginPage() {
           <span className="font-['Inter'] text-[48px] font-[600] leading-[52px] text-default-font text-center -tracking-[0.04em]">
             WonderPay
           </span>
-          <img
+          <Image
             className="h-12 w-12 flex-none object-cover"
             src="https://res.cloudinary.com/subframe/image/upload/v1736234687/uploads/4629/tju1xfldjj63cqlzrxtw.png"
             alt="WonderPay logo"
+            width={48}
+            height={48}
           />
           <span className="w-full font-['Inter'] text-[17px] font-[400] leading-[24px] text-subtext-color text-center -tracking-[0.01em]">
             WonderPay is a private AP &amp; AR automation platform with working
@@ -73,6 +77,11 @@ export default function LoginPage() {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+            <div className="flex justify-end">
+              <Link href="/forgot-password" className="text-blue-600 hover:text-blue-800 text-sm">
+                Forgot password?
+              </Link>
+            </div>
           </div>
           
           <div className="flex w-full max-w-[400px] items-center justify-center gap-6 mt-6">

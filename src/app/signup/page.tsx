@@ -94,8 +94,8 @@ export default function EntitySignupPage() {
       const result: { id: string; type: string; email: string } = await response.json();
       console.log("Entity created:", result);
       
-      // Redirect to dashboard or confirmation page
-      router.push('/dashboard');
+      // Redirect to email verification page
+      router.push('/verify-email');
     } catch (error) {
       console.error("Error creating entity:", error);
       alert("There was an error creating your entity. Please try again.");
