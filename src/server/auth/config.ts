@@ -40,26 +40,29 @@ export const authConfig = {
       name: "Email/Password",
       credentials: {
         email: { label: "Email", type: "email", placeholder: "hello@example.com" },
-        password: { label: "Password", type: "password" },
+        password: { label: "Password", type: "password", placeholder: "" },
       },
       async authorize(credentials, _req) {
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
+        
+        const email = credentials.email as string;
+        const password = credentials.password as string;
 
         try {
           // Find the user by email
           const user = await db.user.findUnique({
-            where: { email: credentials.email },
+            where: { email },
           });
 
           // If no user found or password doesn't exist, return null
-          if (!user || !user.password) {
+          if (!user?.password) {
             return null;
           }
 
           // Verify the password
-          const passwordMatch = await bcrypt.compare(credentials.password as string, user.password);
+          const passwordMatch = await bcrypt.compare(password, user.password);
 
           if (!passwordMatch) {
             return null;
@@ -70,7 +73,7 @@ export const authConfig = {
             id: user.id,
             email: user.email,
             name: user.name,
-            moniteEntityId: user.moniteEntityId || undefined,
+            moniteEntityId: user.moniteEntityId ?? undefined,
           };
         } catch (error) {
           console.error("Error authenticating:", error);
@@ -83,6 +86,12 @@ export const authConfig = {
   adapter: PrismaAdapter(db),
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  pages: {
+    signIn: '/login',
+    signOut: '/',
+    error: '/login', // Error code passed in query string as ?error=
   },
   callbacks: {
     session: ({ session, token, user }) => {
@@ -92,8 +101,8 @@ export const authConfig = {
           ...session,
           user: {
             ...session.user,
-            id: token.sub,
-            moniteEntityId: token.moniteEntityId,
+            id: token.sub ?? "",
+            moniteEntityId: token.moniteEntityId as string | undefined,
           },
         };
       }
@@ -103,7 +112,7 @@ export const authConfig = {
         ...session,
         user: {
           ...session.user,
-          id: user?.id,
+          id: user?.id ?? "",
         },
       };
     },

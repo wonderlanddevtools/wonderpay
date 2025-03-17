@@ -1,0 +1,119 @@
+{
+  "data": [
+    {
+      "id": "entity-001",
+      "type": "organization",
+      "name": "Acme Corporation",
+      "email": "contact@acme.com",
+      "tax_id": "123456789",
+      "status": "active",
+      "address": {
+        "country": "US",
+        "city": "San Francisco",
+        "postal_code": "94105",
+        "line1": "123 Market St",
+        "state": "CA"
+      },
+      "phone": "+1 (415) 555-0123",
+      "website": "https://acme.com",
+      "organization": {
+        "legal_name": "Acme Corporation Inc."
+      },
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "entity-002",
+      "type": "organization",
+      "name": "Globex Corporation",
+      "email": "info@globex.com",
+      "tax_id": "987654321",
+      "status": "active",
+      "address": {
+        "country": "US",
+        "city": "Boston",
+        "postal_code": "02108",
+        "line1": "456 State St",
+        "state": "MA"
+      },
+      "phone": "+1 (617) 555-0456",
+      "website": "https://globex.com",
+      "organization": {
+        "legal_name": "Globex Corporation Ltd."
+      },
+      "created_at": "2024-02-01T14:30:00Z",
+      "updated_at": "2024-02-01T14:30:00Z"
+    },
+    {
+      "id": "entity-003",
+      "type": "individual",
+      "name": "John Smith Consulting",
+      "email": "john@smithconsulting.com",
+      "tax_id": "456789123",
+      "status": "active",
+      "address": {
+        "country": "US",
+        "city": "Chicago",
+        "postal_code": "60601",
+        "line1": "789 Michigan Ave",
+        "state": "IL"
+      },
+      "phone": "+1 (312) 555-0789",
+      "individual": {
+        "first_name": "John",
+        "last_name": "Smith"
+      },
+      "created_at": "2024-02-15T09:15:00Z",
+      "updated_at": "2024-02-15T09:15:00Z"
+    },
+    {
+      "id": "vendor-123",
+      "type": "organization",
+      "name": "Supplies Inc.",
+      "email": "orders@supplies.com",
+      "tax_id": "555666777",
+      "status": "active",
+      "address": {
+        "country": "US",
+        "city": "Denver",
+        "postal_code": "80202",
+        "line1": "1010 Supply Blvd",
+        "state": "CO"
+      },
+      "phone": "+1 (303) 555-1010",
+      "website": "https://supplies.com",
+      "organization": {
+        "legal_name": "Supplies Incorporated"
+      },
+      "created_at": "2024-01-05T11:45:00Z",
+      "updated_at": "2024-01-05T11:45:00Z"
+    },
+    {
+      "id": "customer-123",
+      "type": "organization",
+      "name": "TechStart LLC",
+      "email": "billing@techstart.io",
+      "tax_id": "888999000",
+      "status": "active",
+      "address": {
+        "country": "US",
+        "city": "Austin",
+        "postal_code": "78701",
+        "line1": "2020 Tech Drive",
+        "state": "TX"
+      },
+      "phone": "+1 (512) 555-2020",
+      "website": "https://techstart.io",
+      "organization": {
+        "legal_name": "TechStart Limited Liability Company"
+      },
+      "created_at": "2024-02-10T16:20:00Z",
+      "updated_at": "2024-02-10T16:20:00Z"
+    }
+  ],
+  "pagination": {
+    "total": 5,
+    "limit": 10,
+    "offset": 0
+  }
+}

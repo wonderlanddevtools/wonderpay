@@ -16,30 +16,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface SidebarLinkProps {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-  active?: boolean;
-}
-
-const SidebarLink = ({ href, icon, label, active }: SidebarLinkProps) => {
-  return (
-    <Link 
-      href={href} 
-      className={cn(
-        "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
-        active 
-          ? "bg-blue-50 text-blue-600" 
-          : "text-gray-700 hover:bg-gray-100"
-      )}
-    >
-      <span className="text-[20px]">{icon}</span>
-      <span>{label}</span>
-    </Link>
-  );
-};
-
 export function Sidebar() {
   const pathname = usePathname();
   
@@ -52,82 +28,160 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="w-64 h-screen flex flex-col bg-white border-r border-gray-200">
+    <div className="h-full w-64 flex flex-col bg-white border-r border-gray-100 shadow-sm">
       {/* Logo Section */}
-      <div className="p-4 mb-4">
-        <Link href="/dashboard" className="flex items-center justify-center">
-          <Image 
-            src="/ladybug.svg" 
-            alt="WonderPay" 
-            width={48} 
-            height={48} 
-            className="mx-auto"
-          />
+      <div className="p-6">
+        <Link href="/dashboard" className="flex items-center">
+          <div className="relative flex items-center">
+            {/* Use local ladybug.svg with onError fallback */}
+            <div className="relative w-10 h-10 mr-3">
+              <Image 
+                src="/ladybug.svg" 
+                alt="WonderPay" 
+                width={40} 
+                height={40} 
+                className="mr-3"
+              />
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+              <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+              <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+            </div>
+          </div>
         </Link>
       </div>
       
       {/* Navigation Links */}
-      <nav className="flex-1 px-3 py-2 space-y-1">
-        <SidebarLink 
-          href="/dashboard" 
-          icon={<Home size={20} />} 
-          label="Home" 
-          active={isActive('/dashboard')}
-        />
-        <SidebarLink 
-          href="/dashboard/bill-pay" 
-          icon={<ArrowRightLeft size={20} />} 
-          label="Bill Pay" 
-          active={isActive('/dashboard/bill-pay')}
-        />
-        <SidebarLink 
-          href="/dashboard/receivables" 
-          icon={<ArrowDownLeft size={20} />} 
-          label="Receivables" 
-          active={isActive('/dashboard/receivables')}
-        />
-        <SidebarLink 
-          href="/dashboard/create-invoice" 
-          icon={<FileText size={20} />} 
-          label="Create Invoice" 
-          active={isActive('/dashboard/create-invoice')}
-        />
-        <SidebarLink 
-          href="/dashboard/quickpay" 
-          icon={<CreditCard size={20} />} 
-          label="QuickPay" 
-          active={isActive('/dashboard/quickpay')}
-        />
-        <SidebarLink 
-          href="/dashboard/capital" 
-          icon={<Wallet size={20} />} 
-          label="WonderPay Capital" 
-          active={isActive('/dashboard/capital')}
-        />
-        <SidebarLink 
-          href="/dashboard/clients-vendors" 
-          icon={<Users size={20} />} 
-          label="Clients & Vendors" 
-          active={isActive('/dashboard/clients-vendors')}
-        />
-        <SidebarLink 
-          href="/dashboard/settings" 
-          icon={<Settings size={20} />} 
-          label="Settings" 
-          active={isActive('/dashboard/settings')}
-        />
+      <nav className="flex-1 px-4 py-4 space-y-4">
+        <Link 
+          href="/dashboard"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <Home size={20} />
+          <span>Home</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/bill-pay"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/bill-pay') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <ArrowRightLeft size={20} />
+          <span>Bill Pay</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/receivables"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/receivables') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <ArrowDownLeft size={20} />
+          <span>Receivables</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/create-invoice"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/create-invoice') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <FileText size={20} />
+          <span>Create Invoice</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/quickpay"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/quickpay') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <CreditCard size={20} />
+          <span>QuickPay</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/capital"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/capital') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <Wallet size={20} />
+          <span>WonderPay Capital</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/documents"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/documents') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <FileText size={20} />
+          <span>Documents</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/clients-vendors"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/clients-vendors') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <Users size={20} />
+          <span>Clients & Vendors</span>
+        </Link>
+        
+        <Link 
+          href="/dashboard/settings"
+          className={cn(
+            "flex items-center gap-3 px-4 py-3 text-sm rounded-lg transition-colors",
+            isActive('/dashboard/settings') 
+              ? "bg-blue-50 text-blue-600" 
+              : "text-gray-700 hover:bg-gray-100"
+          )}
+        >
+          <Settings size={20} />
+          <span>Settings</span>
+        </Link>
       </nav>
       
       {/* Logout Link */}
-      <div className="px-3 py-4 border-t border-gray-200">
+      <div className="px-4 py-6 border-t border-gray-100">
         <Link 
           href="/api/auth/signout"
-          className="flex items-center gap-3 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+          className="flex items-center gap-3 px-4 py-2 text-sm text-blue-600 hover:text-blue-800 transition-colors"
         >
           <LogOut size={20} />
           <span>Log Out</span>
         </Link>
       </div>
-    </aside>
+    </div>
   );
 }

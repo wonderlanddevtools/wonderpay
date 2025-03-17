@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "id": "payment-001",
+      "status": "completed",
+      "created_at": "2025-03-10T14:30:00Z",
+      "updated_at": "2025-03-10T14:35:00Z",
+      "recipient": {
+        "id": "entity-001",
+        "name": "Acme Corporation"
+      },
+      "amount": 1250.00,
+      "currency": "USD",
+      "description": "Software license renewal",
+      "payment_method": "pm-001",
+      "reference": "INV-2025-021",
+      "transaction_id": "tx_abc123def456"
+    },
+    {
+      "id": "payment-002",
+      "status": "completed",
+      "created_at": "2025-03-05T10:15:00Z",
+      "updated_at": "2025-03-05T10:18:00Z",
+      "recipient": {
+        "id": "entity-003",
+        "name": "John Smith Consulting"
+      },
+      "amount": 3500.00,
+      "currency": "USD",
+      "description": "Consulting services - February",
+      "payment_method": "pm-003",
+      "reference": "CONS-FEB25",
+      "transaction_id": "tx_ghi789jkl012"
+    },
+    {
+      "id": "payment-003",
+      "status": "processing",
+      "created_at": "2025-03-16T09:45:00Z",
+      "updated_at": "2025-03-16T09:45:00Z",
+      "recipient": {
+        "id": "vendor-123",
+        "name": "Supplies Inc."
+      },
+      "amount": 450.00,
+      "currency": "USD",
+      "description": "Office supplies - Q1",
+      "payment_method": "pm-001",
+      "reference": "PO-2025-033"
+    },
+    {
+      "id": "payment-004",
+      "status": "failed",
+      "created_at": "2025-03-12T16:20:00Z",
+      "updated_at": "2025-03-12T16:25:00Z",
+      "recipient": {
+        "id": "entity-002",
+        "name": "Globex Corporation"
+      },
+      "amount": 2800.00,
+      "currency": "USD",
+      "description": "Marketing services - March",
+      "payment_method": "pm-002",
+      "reference": "MRKT-MAR25"
+    },
+    {
+      "id": "payment-005",
+      "status": "pending",
+      "created_at": "2025-03-15T11:10:00Z",
+      "updated_at": "2025-03-15T11:10:00Z",
+      "recipient": {
+        "id": "customer-123",
+        "name": "TechStart LLC"
+      },
+      "amount": 1500.00,
+      "currency": "USD",
+      "description": "Refund for overpayment",
+      "payment_method": "pm-003",
+      "reference": "REF-2025-007"
+    }
+  ],
+  "pagination": {
+    "total": 5,
+    "limit": 10,
+    "offset": 0
+  }
+}

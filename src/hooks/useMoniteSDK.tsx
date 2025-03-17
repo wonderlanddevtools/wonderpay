@@ -79,7 +79,6 @@ export const MoniteProviderWrapper: React.FC<MoniteProviderWrapperProps> = ({
   return (
     <MoniteProvider 
       monite={moniteSDK}
-      locale={{ currencyLocale: "en" }}
     >
       {children}
     </MoniteProvider>

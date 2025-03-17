@@ -1,0 +1,119 @@
+{
+  "data": [
+    {
+      "id": "payable-001",
+      "vendor_id": "vendor-123",
+      "vendor_name": "Supplies Inc.",
+      "amount": 1250.00,
+      "currency": "USD",
+      "description": "Office furniture and supplies",
+      "issue_date": "2025-02-15T00:00:00Z",
+      "due_date": "2025-03-15T00:00:00Z",
+      "status": "pending",
+      "created_at": "2025-02-15T10:30:00Z",
+      "updated_at": "2025-02-15T10:30:00Z",
+      "category": "Office Supplies",
+      "payment_terms": {
+        "term_days": 30,
+        "payment_method": "bank_transfer"
+      }
+    },
+    {
+      "id": "payable-002",
+      "vendor_id": "entity-001",
+      "vendor_name": "Acme Corporation",
+      "amount": 5600.00,
+      "currency": "USD",
+      "description": "Software licenses - Annual subscription",
+      "issue_date": "2025-01-30T00:00:00Z",
+      "due_date": "2025-03-01T00:00:00Z",
+      "status": "pending",
+      "created_at": "2025-01-30T14:45:00Z",
+      "updated_at": "2025-01-30T14:45:00Z",
+      "category": "Software",
+      "payment_terms": {
+        "term_days": 30,
+        "payment_method": "credit_card"
+      }
+    },
+    {
+      "id": "payable-003",
+      "vendor_id": "entity-002",
+      "vendor_name": "Globex Corporation",
+      "amount": 3200.00,
+      "currency": "USD",
+      "description": "Marketing services - Q1 campaign",
+      "issue_date": "2025-01-15T00:00:00Z",
+      "due_date": "2025-02-15T00:00:00Z",
+      "status": "overdue",
+      "created_at": "2025-01-15T09:15:00Z",
+      "updated_at": "2025-02-16T08:00:00Z",
+      "category": "Marketing",
+      "payment_terms": {
+        "term_days": 30,
+        "payment_method": "bank_transfer"
+      }
+    },
+    {
+      "id": "payable-004",
+      "vendor_id": "entity-003",
+      "vendor_name": "John Smith Consulting",
+      "amount": 4800.00,
+      "currency": "USD",
+      "description": "Consulting services - January",
+      "issue_date": "2025-02-01T00:00:00Z",
+      "due_date": "2025-02-15T00:00:00Z",
+      "status": "paid",
+      "paid_date": "2025-02-14T00:00:00Z",
+      "created_at": "2025-02-01T11:20:00Z",
+      "updated_at": "2025-02-14T16:45:00Z",
+      "category": "Consulting",
+      "payment_terms": {
+        "term_days": 15,
+        "payment_method": "bank_transfer"
+      }
+    },
+    {
+      "id": "payable-005",
+      "vendor_id": "vendor-123",
+      "vendor_name": "Supplies Inc.",
+      "amount": 750.00,
+      "currency": "USD",
+      "description": "Office supplies - Paper, printer ink, stationery",
+      "issue_date": "2025-02-10T00:00:00Z",
+      "due_date": "2025-03-10T00:00:00Z",
+      "status": "pending",
+      "created_at": "2025-02-10T13:40:00Z",
+      "updated_at": "2025-02-10T13:40:00Z",
+      "category": "Office Supplies",
+      "payment_terms": {
+        "term_days": 30,
+        "payment_method": "credit_card"
+      }
+    },
+    {
+      "id": "payable-006",
+      "vendor_id": "entity-001",
+      "vendor_name": "Acme Corporation",
+      "amount": 12000.00,
+      "currency": "USD",
+      "description": "Hardware purchase - Servers",
+      "issue_date": "2025-01-20T00:00:00Z",
+      "due_date": "2025-02-20T00:00:00Z",
+      "status": "paid",
+      "paid_date": "2025-02-18T00:00:00Z",
+      "created_at": "2025-01-20T15:10:00Z",
+      "updated_at": "2025-02-18T10:25:00Z",
+      "category": "Hardware",
+      "payment_terms": {
+        "term_days": 30,
+        "payment_method": "bank_transfer"
+      }
+    }
+  ],
+  "pagination": {
+    "total": 6,
+    "limit": 10,
+    "offset": 0
+  }
+}

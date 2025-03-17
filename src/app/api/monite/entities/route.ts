@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call */
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { createEntity, listEntities } from "~/server/monite/monite-api";
+import { moniteClient } from "~/server/monite/monite-client";
 import { db } from "~/server/db";
 import bcrypt from "bcryptjs";
 import { sendVerificationEmail } from "~/server/email";
@@ -57,7 +58,7 @@ interface UserData {
  */
 export async function GET() {
   try {
-    const entitiesData = await listEntities() as Record<string, unknown>;
+    const entitiesData = await moniteClient.listEntities();
     return NextResponse.json(entitiesData);
   } catch (error) {
     console.error("Error listing Monite entities:", error);
@@ -128,7 +129,16 @@ export async function POST(request: NextRequest) {
     const { userData: _unused, ...entityDataForApi } = entityData;
     
     // Create entity in Monite
-    const result: EntityResult = await createEntity(entityDataForApi) as EntityResult;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const apiResult = await moniteClient.createEntity<Record<string, unknown>>(entityDataForApi);
+    // Validate that the result has an id property
+    if (!apiResult || typeof apiResult !== 'object' || !('id' in apiResult)) {
+      throw new Error('Invalid API response: missing id property');
+    }
+    
+    // Now we can safely use the result
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const result: EntityResult = apiResult as EntityResult;
     
     // If user data is provided, create a user in our database
     if (userData?.email && userData?.password) {
