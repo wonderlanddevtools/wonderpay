@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { Card } from '@/components/ui/card';
+import { cn } from '~/lib/utils';
+import { Card } from '~/components/ui/card';
 
 interface ContactCardProps {
   name?: string;  // Keep for backward compatibility
@@ -16,6 +16,7 @@ interface ContactCardProps {
   link?: string;
   className?: string;
   onClick?: () => void;
+  color?: 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'teal'; // Added for consistency with stat cards
 }
 
 export function ContactCard({
@@ -31,14 +32,44 @@ export function ContactCard({
   link,
   className,
   onClick,
+  color = 'blue', // Default to blue
 }: ContactCardProps) {
   // Use title or fall back to name for backward compatibility
-  const displayName = title || name || "";
+  const displayName = title ?? name ?? "";
   // Use imageUrl or fall back to avatar for backward compatibility
-  const displayImage = imageUrl || avatar;
+  const displayImage = imageUrl ?? avatar;
+  
+  // Get the color classes based on the color prop
+  const getColorClasses = () => {
+    switch (color) {
+      case 'green':
+        return { bg: 'bg-green-100', text: 'text-green-800', accent: 'before:bg-green-500' };
+      case 'red':
+        return { bg: 'bg-red-100', text: 'text-red-800', accent: 'before:bg-red-500' };
+      case 'yellow':
+        return { bg: 'bg-yellow-100', text: 'text-yellow-800', accent: 'before:bg-yellow-500' };
+      case 'purple':
+        return { bg: 'bg-purple-100', text: 'text-purple-800', accent: 'before:bg-purple-500' };
+      case 'teal':
+        return { bg: 'bg-teal-100', text: 'text-teal-800', accent: 'before:bg-teal-500' };
+      case 'blue':
+      default:
+        return { bg: 'bg-blue-100', text: 'text-blue-800', accent: 'before:bg-blue-500' };
+    }
+  };
+  
+  const colorClasses = getColorClasses();
   
   const cardContent = (
-    <Card className={cn('overflow-hidden', onClick && 'cursor-pointer', className)}>
+    <Card 
+      className={cn(
+        'overflow-hidden relative', 
+        onClick && 'cursor-pointer', 
+        'before:absolute before:top-0 before:left-0 before:w-1 before:h-full',
+        colorClasses.accent,
+        className
+      )}
+    >
       <div className="p-5">
         <div className="flex items-start">
           <div className="flex-shrink-0 mr-4">
@@ -49,25 +80,25 @@ export function ContactCard({
                 className="w-16 h-16 rounded-lg object-cover"
               />
             ) : (
-              <div className="w-16 h-16 rounded-lg bg-neutral-200 flex items-center justify-center text-neutral-700 text-xl font-bold">
+              <div className={cn("w-16 h-16 rounded-lg flex items-center justify-center text-xl font-bold", colorClasses.bg, colorClasses.text)}>
                 {displayName.charAt(0).toUpperCase()}
               </div>
             )}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-medium text-neutral-900 truncate">{displayName}</h3>
+            <h3 className="text-lg font-medium text-gray-900 truncate">{displayName}</h3>
             {subtitle && (
-              <p className="text-sm text-neutral-600">{subtitle}</p>
+              <p className="text-sm text-gray-600">{subtitle}</p>
             )}
-            <p className="mt-1 text-sm text-neutral-500">{email}</p>
+            <p className="mt-1 text-sm text-gray-500">{email}</p>
             {phone && (
-              <p className="mt-1 text-sm text-neutral-500">{phone}</p>
+              <p className="mt-1 text-sm text-gray-500">{phone}</p>
             )}
           </div>
         </div>
         
         {address && (
-          <div className="mt-4 text-sm text-neutral-500">
+          <div className="mt-4 text-sm text-gray-500">
             <p className="truncate">{address}</p>
           </div>
         )}
@@ -77,7 +108,7 @@ export function ContactCard({
             {tags.map((tag, index) => (
               <span 
                 key={index}
-                className="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800"
+                className={cn("px-2 py-1 text-xs rounded-full", colorClasses.bg, colorClasses.text)}
               >
                 {tag}
               </span>
